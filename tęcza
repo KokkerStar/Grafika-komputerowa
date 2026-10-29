@@ -1,0 +1,93 @@
+from drawing import picture
+from math import *
+from random import *
+
+picture.ChangeSize(100, 100)
+picture.Clear('clWhite')
+picture.ChangeScale(800)
+
+# [A] taki sobie szlaczek ciut podobny do sin(x)
+for x in range(10,91):
+    picture.ChangePixel(x, 10+sin(x), 'clDarkGreen')
+
+# [B] mo¿e go rozci¹gniemy?
+for x in range(10,92):
+    picture.ChangePixel(x, 25+5*sin(x/5), 'clDarkBlue')
+
+Colors = ['clPink', 'clOrange', 'clBlue', 'clGreen','clPurple','clYellow']
+
+
+sy = 50 # pocz¹tek y
+while  sy >= 40:
+    number = randint(0,5)
+    x = 0
+    j = 10 # jednostka -> 10px
+    sx = 10 # pocz¹tek x
+    while x < 2.5*pi:
+        picture.ChangePixel(sx + j*x, sy - j*sin(x),Colors[number])
+        x = x + 0.1 
+    sy = sy - 1  
+
+
+x = 0
+j = 10 # jednostka -> 10px
+sx = 10 # pocz¹tek x
+sy = 50 # pocz¹tek y
+while x < 2.5*pi:
+    picture.ChangePixel(sx + j*x, sy - j*sin(x), 'clRed')
+    x = x + 0.1
+    
+
+#Oœ OY
+for w in range(30,50):
+    picture.ChangePixel(10,w,"clGrey")  
+#Oœ OX
+for w in range(10,90):
+    picture.ChangePixel(w,50,"clGrey")  
+
+#Jednostki na osi X
+for n in range(10,88,16):
+    picture.ChangePixel(n,50,"clBlack")
+for n in range(10,88,16):
+    picture.ChangePixel(n,51,"clBlack")
+for n in range(10,88,16):
+    picture.ChangePixel(n,49,"clBlack")
+
+#Jednostki na osi Y 
+picture.ChangePixel(10,40,"clBlack")
+picture.ChangePixel(9,40,"clBlack")
+picture.ChangePixel(11,40,"clBlack")
+
+
+#Strza³ki
+picture.ChangePixel(11,31,"clGrey")
+picture.ChangePixel(12,32,"clGrey")
+picture.ChangePixel(9,31,"clGrey")
+picture.ChangePixel(8,32,"clGrey")
+picture.ChangePixel(88,49,"clGrey")
+picture.ChangePixel(87,48,"clGrey")
+picture.ChangePixel(88,51,"clGrey")
+picture.ChangePixel(87,52,"clGrey")
+
+# [D] trudno siê zdecydowaæ, czy po pikselach nie jest lepiej
+j = 10 # jednostka -> 10px
+sx = 10 # pocz¹tek x
+sy = 80 # pocz¹tek y
+for x in range(10,91):
+    xobl = (x-sx)/j
+    yobl = sin(xobl)
+    picture.ChangePixel(x, sy - j*yobl, 'clorange')
+    
+#0. dlaczego [A] jest taki nieudany? jak zmieniaj¹ siê
+#   wartoœci sin(x)?
+#1. zobacz co siê stanie, gdy [B] 5* zast¹pimy 15* ?
+#2. gdzie jest pocz¹tek uk³adu wspó³rzêdnych dla [B] ?
+#3. gdzie jest pocz. uk³. wsp. dla [C]?
+#4. narysuj oœ x oraz y dla [C] kolorem szarym, zrób
+#   ³adne strza³ki i zaznacz jednostki
+#5. co siê stanie, gdy w [C] bêdziemy wykreœlaæ 3*sin(x) ?
+#   czy zmiana kroku z 0.1 na inny pomo¿e? Jaki bêdzie dobry?
+#6. co siê stanie, gdy w [D] bêdziemy wykreœlaæ 3*sin(x) ?
+#   czy da siê jakoœ poprawiæ wygl¹d wykresu? Jak najproœciej
+#   to zrobiæ?
+
